@@ -1,6 +1,7 @@
 package ru.clevertec.list;
 
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class MyLinkedList<T> implements MyList<T> {
     private Node<T> first;
@@ -63,7 +64,9 @@ public class MyLinkedList<T> implements MyList<T> {
         for (int i = 0; i < size; i++) {
             if (currentNode.currentElem.equals(t) && currentNode.equals(first)) {
                 Node<T> nextNode = currentNode.next;
-                nextNode.previous = null;
+                if (!Objects.isNull(nextNode)) {
+                    nextNode.previous = null;
+                }
                 first = nextNode;
                 size--;
                 return;
@@ -76,7 +79,9 @@ public class MyLinkedList<T> implements MyList<T> {
                 return;
             } else if (currentNode.currentElem.equals(t) && currentNode.equals(last)) {
                 Node<T> prevNode = currentNode.previous;
-                prevNode.next = null;
+                if (!Objects.isNull(prevNode)) {
+                    prevNode.next = null;
+                }
                 last = prevNode;
                 size--;
                 return;
@@ -92,12 +97,16 @@ public class MyLinkedList<T> implements MyList<T> {
         Node<T> currentNode = getNodeByIndex(index);
         if (index == 0 && currentNode.equals(first)) {
             Node<T> nextNode = currentNode.next;
-            nextNode.previous = null;
+            if (!Objects.isNull(nextNode)) {
+                nextNode.previous = null;
+            }
             first = nextNode;
             size--;
         } else if (index == (size - 1) && currentNode.equals(last)) {
             Node<T> prevNode = currentNode.previous;
-            prevNode.next = null;
+            if (!Objects.isNull(prevNode)) {
+                prevNode.next = null;
+            }
             last = prevNode;
             size--;
         } else {
