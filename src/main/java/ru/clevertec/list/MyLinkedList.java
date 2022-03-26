@@ -87,6 +87,34 @@ public class MyLinkedList<T> implements MyList<T> {
     }
 
     @Override
+    public void remove(int index) {
+        checkByIndex(index);
+        Node<T> currentNode = getNodeByIndex(index);
+        if (index == 0 && currentNode.equals(first)) {
+            Node<T> nextNode = currentNode.next;
+            nextNode.previous = null;
+            first = nextNode;
+            size--;
+        } else if (index == (size - 1) && currentNode.equals(last)) {
+            Node<T> prevNode = currentNode.previous;
+            prevNode.next = null;
+            last = prevNode;
+            size--;
+        } else {
+            Node<T> nextNode = currentNode.next;
+            Node<T> previousNode = currentNode.previous;
+            nextNode.previous = previousNode;
+            previousNode.next = nextNode;
+            size--;
+        }
+    }
+
+    @Override
+    public int getSize() {
+        return size;
+    }
+
+    @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
         Node<T> currentNode = first;

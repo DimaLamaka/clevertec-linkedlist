@@ -30,10 +30,18 @@ public class Main {
         myList.add(0,"kk");
         System.out.println(myList);
 
+        myList.remove(2);
+        System.out.println(myList);
+        System.out.println(myList.getSize());
+
+        myList.remove(0);
+        System.out.println(myList);
+        System.out.println(myList.getSize());
+
         /*myList.add(-24342424,"kk");
         System.out.println(myList);*/
 
-        myList.remove("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        System.out.println(myList);
+       /* myList.remove("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        System.out.println(myList);*/
     }
 }

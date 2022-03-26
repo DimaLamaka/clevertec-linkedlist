@@ -11,4 +11,8 @@ public interface MyList<T> {
 
     void remove(T t);
 
+    void remove(int index);
+
+    int getSize();
+
 }
